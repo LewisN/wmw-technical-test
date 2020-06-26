@@ -1,0 +1,63 @@
+<a class="product-card" href="{{ product.url | within: collection }}">
+  <div class="product-card__img-container">
+    {% if product.featured_image != blank %}
+      {{ product.featured_image | img_url: 'large' | img_tag }}
+    {% endif %}
+
+    {% for tag in product.tags %}
+      {% if tag contains 'badge: ' %}
+        <div class="product-card__badge">
+          {{ tag | remove: 'badge: ' | capitalize }}
+        </div>
+      {% endif %}
+    {% endfor %}
+
+    <div class="product-card__quick-add">
+      {% if product.variants != blank %}
+        {% assign classNames = "
+          product-card__quick-add__cta
+          button button--inverse
+        " %}
+
+        {% for variant in product.variants %}
+          {% if forloop.first == true %}
+            <div class="product-card__quick-add__variants">
+              <p>Select a size:</p>
+              <select>
+          {% endif %}
+
+          <option value="{{ variant.id }}">{{ variant.title }}</option>
+
+          {% if forloop.last == true %}
+              </select>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        {% assign classNames = "
+          product-card__quick-add__cta
+          product-card__quick-add__cta--single
+          button button--inverse
+        " %}
+      {% endif %}
+
+      <div
+        class="{{ classNames }}"
+        data-quantity="1"
+        data-variant-id="{{ current_variant.id }}"
+        js-ajax-cart="addToCart"
+        role="button"
+      >
+        Add to cart
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <p class="product-card__title">{{ product.title | escape }}</p>
+
+    <span class="product-card__price">
+      {% render 'product-price' with product: product %}
+    </span>
+  </div>
+</a>

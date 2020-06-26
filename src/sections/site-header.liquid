@@ -50,7 +50,7 @@
     <a class="site-header__cart" href="/cart">
       {% include 'icon-cart' %}
       {{ 'layout.cart.title' | t }}
-      ({{ cart.item_count }})
+      <span class="site-header__cart__count">({{ cart.item_count }})</span>
     </a>
   </header>
 </section>

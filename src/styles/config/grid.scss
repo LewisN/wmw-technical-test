@@ -16,11 +16,11 @@ $mq-breakpoints: (
   small: 576px,
   medium: 768px,
   large: 1024px,
-  wide: 1328px
+  wide: 1440px
 );
 
 $NUM_COLS: 12 !default;
-$GUTTER_WIDTH: 1rem !default;
+$GUTTER_WIDTH: 2rem !default;
 $ELEMENT_TOP_MARGIN: 1rem !default;
 $ELEMENT_BOTTOM_MARGIN: 1rem !default;
 

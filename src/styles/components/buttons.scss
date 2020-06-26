@@ -1,11 +1,39 @@
 .button {
-  display: inline-block;
-  vertical-align: middle;
-  width: auto;
+  @at-root {
+    a#{&}:focus {
+      color: $COLOR_TEXT_INVERSE;
+
+      &--inverse {
+        color: $COLOR_TEXT_PRIMARY;
+      }
+    }
+  }
+  appearance: none;
+  background-color: $COLOR_BACKGROUND_DARK;
   border: 0;
+  color: $COLOR_TEXT_INVERSE;
+  display: inline-block;
+  font-size: 1.4rem;
+  font-weight: $WEIGHT_MEDIUM;
+  line-height: $LINE_HEIGHT_BODY;
+  overflow: hidden;
+  padding: $SPACING_M;
+  position: relative;
   text-align: center;
-  white-space: nowrap;
   text-decoration: none;
   user-select: none;
-  appearance: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: auto;
+
+  &--inverse {
+    background-color: $COLOR_BACKGROUND_LIGHT;
+    color: $COLOR_TEXT_PRIMARY;
+    font-weight: $WEIGHT_SEMIBOLD;
+  }
+
+  @include mq($from: small) {
+    font-size: 1.8rem;
+    padding: $SPACING_L $SPACING_2XL;
+  }
 }

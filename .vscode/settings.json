@@ -1,4 +1,5 @@
 {
   "eslint.enable": true,
-  "stylelint.enable": true
+  "stylelint.enable": true,
+  "deno.enable": false
 }

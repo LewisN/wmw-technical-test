@@ -20,38 +20,33 @@
           {{ collection.title | escape }}
         </h2>
 
-        <p>
+        <p class="featured-collection__desc">
           {{ collection.description }}
         </p>
 
         {% for product in collection.products limit: 8 %}
           {% assign current_variant = product.selected_or_first_available_variant %}
 
-          <a class="product-card" href="{{ product.url | within: collection }}">
-            <div>
-              {% if product.featured_image != blank %}
-                {{ product.featured_image | img_url: 'large' | img_tag }}
-              {% endif %}
+          {% if forloop.first == true %}
+            <div class="featured-collection__products">
+          {% endif %}
 
-              <span
-                class="product-card__add-to-cart"
-                data-quantity="1"
-                data-variant-id="{{ current_variant.id }}"
-                js-ajax-cart="addToCart"
-              >
-                Add to cart
-              </span>
+          {% render 'product-card' with product: product, current_variant: current_variant %}
+
+          {% if forloop.last == true %}
             </div>
-
-            <div>
-              <p>{{ product.title | escape }}</p>
-
-              <span>
-                {% include 'product-price' %}
-              </span>
-            </div>
-          </a>
+          {% endif %}
         {% endfor %}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col xs12">
+        <a
+          class="button"
+          href="#"
+          role="button"
+        >View collection</a>
       </div>
     </div>
   </div>

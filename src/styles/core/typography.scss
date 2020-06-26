@@ -16,6 +16,10 @@ h6 {
   font-family: $FONT_DISPLAY;
 }
 
+p {
+  font-size: 1.4rem;
+}
+
 body,
 input,
 textarea,
@@ -27,4 +31,10 @@ select {
 
 a:focus {
   color: inherit;
+}
+
+@include mq($from: small) {
+  p {
+    font-size: 1.8rem;
+  }
 }
